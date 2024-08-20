@@ -28,7 +28,7 @@ public class BookController {
 
     @GetMapping("{book-id}")
     public ResponseEntity<BookResponse> findBookById(
-            @PathVariable("Book-id") Integer bookId
+            @PathVariable("book-id") Integer bookId
     ){
         return ResponseEntity.ok(service.findById(bookId));
     }

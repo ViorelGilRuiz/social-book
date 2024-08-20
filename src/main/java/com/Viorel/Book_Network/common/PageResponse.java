@@ -1,7 +1,8 @@
 package com.Viorel.Book_Network.common;
 
 import lombok.*;
-import org.hibernate.mapping.List;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -10,7 +11,7 @@ import org.hibernate.mapping.List;
 @NoArgsConstructor
 public class PageResponse <T> {
 
-    private List content;
+    private List<T> content;
     private int number;
     private int size;
     private long totalElements;

@@ -55,7 +55,7 @@ public class BookService {
                 .map(bookMapper::toBookResponse)
                 .toList();
         return new PageResponse<>(
-                (org.hibernate.mapping.List) booksResponse,
+                booksResponse,
                 books.getNumber(),
                 books.getSize(),
                 books.getTotalElements(),
@@ -73,7 +73,7 @@ public class BookService {
                 .map(bookMapper::toBookResponse)
                 .toList();
         return new PageResponse<>(
-                (org.hibernate.mapping.List) booksResponse,
+                booksResponse,
                 books.getNumber(),
                 books.getSize(),
                 books.getTotalElements(),
@@ -91,7 +91,7 @@ public class BookService {
                 .map(bookMapper::toBorrowedBookResponse)
                 .toList();
         return new PageResponse<>(
-                (org.hibernate.mapping.List) booksResponse,
+                booksResponse,
                 allBorrowedBooks.getNumber(),
                 allBorrowedBooks.getSize(),
                 allBorrowedBooks.getTotalElements(),
@@ -109,7 +109,7 @@ public class BookService {
                 .map(bookMapper::toBorrowedBookResponse)
                 .toList();
         return new PageResponse<>(
-                (org.hibernate.mapping.List) booksResponse,
+                booksResponse,
                 allBorrowedBooks.getNumber(),
                 allBorrowedBooks.getSize(),
                 allBorrowedBooks.getTotalElements(),
