@@ -2,6 +2,7 @@ package com.Viorel.Book_Network.book;
 
 import com.Viorel.Book_Network.common.PageResponse;
 import com.Viorel.Book_Network.exception.OperationNotPermittedException;
+import com.Viorel.Book_Network.file.FileStorageService;
 import com.Viorel.Book_Network.history.BookTransactionHistory;
 import com.Viorel.Book_Network.history.BookTransactionHistoryRepository;
 import com.Viorel.Book_Network.user.User;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.naming.OperationNotSupportedException;
 import java.util.List;
@@ -32,6 +34,7 @@ public class BookService {
     private final BookTransactionHistoryRepository transactionHistoryRepository;
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;
+    private final FileStorageService fileStorageService;
 
 
     public Integer save(BookRequest request, Authentication connectedUser) {
@@ -200,6 +203,17 @@ public class BookService {
 
         bookTransactionHistory.setReturnApproved(true);
         return transactionHistoryRepository.save(bookTransactionHistory).getId();
+
+    }
+
+    public void uploadBookCoverPicture(MultipartFile file, Authentication connectedUser, Integer bookId) {
+
+        Book book = bookRepository.findById(bookId)
+                .orElseThrow(() -> new EntityNotFoundException("No book found with ID:: " + bookId));
+        User user = ((User) connectedUser.getPrincipal());
+        var profilePicture = fileStorageService.saveFile(file, bookId, user.getId());
+        book.setBookCover(profilePicture);
+        bookRepository.save(book);
 
     }
 }
