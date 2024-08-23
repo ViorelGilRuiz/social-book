@@ -1,5 +1,6 @@
 package com.Viorel.Book_Network.book;
 
+import com.Viorel.Book_Network.file.FileUtils;
 import com.Viorel.Book_Network.history.BookTransactionHistory;
 import org.springframework.stereotype.Service;
 
