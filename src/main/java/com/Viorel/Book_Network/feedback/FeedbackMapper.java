@@ -19,12 +19,11 @@ public class FeedbackMapper {
                 )
                 .build();
     }
-
     public FeedbackResponse toFeedbackResponse(Feedback feedback, Integer id) {
         return FeedbackResponse.builder()
                 .note(feedback.getNote())
                 .comment(feedback.getComment())
-                .ownFeedBack(Objects.equals(feedback.getCreatedBy(), id))
+                .ownFeedBack(Objects.equals(feedback.getCreateBy(), id))
                 .build();
     }
 }
