@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
                         name = "Viorel"
                 ),
                 description = "OpenApi documentation for Spring Security",
-                title = "OpenApi specification - My first API-REST by Viorel",
+                title = "OpenApi specification - My first API-REST by Viorel Gil",
                 version = "1.0",
                 license = @License(
                         name = "Licence name",
